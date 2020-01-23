@@ -1,4 +1,4 @@
-//Deletion in Singly Linked List
+//Insertion in Singly Linked List
 
 
 import java.util.*;
@@ -43,41 +43,6 @@ class linkedList
         }
         return list;
         
-    }
-
-    static linkedList deleteBeg(linkedList list)
-    {
-        if(list.head == null)
-        System.out.println("Not available");
-        else
-        {
-            Node temp1 = list.head;
-            temp1 = temp1.next;
-            list.head = temp1;
-        }
-        return list;
-    }
-
-    static linkedList deleteEnd(linkedList list)
-    {
-        if(list.head == null)
-        System.out.println("Not available");
-        else if(list.head.next==null)
-        {
-            list.head = null;
-            return list;
-        }
-        else
-        {
-            Node temp1 = list.head;
-            while(temp1.next.next!=null)
-            {
-                temp1 = temp1.next;
-            }
-            temp1.next = null;
-
-        }
-        return list;
     }
 
     static void display(linkedList l)
@@ -131,19 +96,7 @@ class linkedList
         // l = insertBeg(l,20);
         // l= insertEnd(l,30);
         display(l);
-
-        cs = sc.nextInt();
-        switch(cs)
-        {
-            case 1:
-                l = deleteBeg(l);
-                break;
-            
-            case 2:    
-                l = deleteEnd(l);
-                break;
-        }
-        display(l);
-
+        sc.close();
+        
     }
 }

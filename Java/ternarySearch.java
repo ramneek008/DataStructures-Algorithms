@@ -1,3 +1,6 @@
+//Ternary Search in arrays
+
+
 import java.util.*;
 
 class ternarySearch
@@ -21,6 +24,7 @@ class ternarySearch
         System.out.println("Not found");
         else
         System.out.println("Value found at index: "+ index);
+        sc.close();
     }
 
     int terSearch(int a[], int num)

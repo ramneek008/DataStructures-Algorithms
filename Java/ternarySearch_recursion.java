@@ -1,3 +1,5 @@
+//Ternary Search in arrays using recursion
+
 import java.util.*;
 
 class ternarySearch_recursion
@@ -23,6 +25,8 @@ class ternarySearch_recursion
         System.out.println("Not found");
         else
         System.out.println("Value found at index: "+ index);
+
+        sc.close();
     }
 
     int ternarySearch(int a[], int num, int beg, int end)

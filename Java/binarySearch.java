@@ -1,3 +1,5 @@
+//Binary Search in arrays
+
 import java.util.*;
 
 class binarySearch 
@@ -21,6 +23,8 @@ class binarySearch
         System.out.print("Not found");
         else
         System.out.println("Value found at index: "+ index);
+
+        sc.close();
         
     }
 

@@ -1,3 +1,5 @@
+//Move the smallest number at beginning and largest at the end in Singly Linked List
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -31,79 +33,53 @@ struct Node *insertLast(struct Node *p,int val)
     
 }
 
-
-int findMiddle(struct Node* head) 
+struct Node * shiftSmallLarge(struct Node *org)
 {
-  if(head == NULL)
-    return -1;
-  else
-  {
-  struct Node *temp = head;
-  int c=0;
+  struct Node *temp,*temp1, *temp2;
+  temp = org;
+  int s=temp->data,l=temp->data;
   while(temp!=NULL)
   {
-    c++;
-    temp = temp->next;
+    s=s<temp->data?s:temp->data;
+    l= l>temp->data?l:temp->data;
+    temp=temp->next;
   }
-  temp = head;
-  if(c%2==0)
+  temp=org;
+  while(temp!=NULL)
   {
-      c=(c/2);
-    for(int i=0;i<c;i++)
+    if(temp->data == s)
     {
-      temp=temp->next;
+      temp1 = temp;
     }
-  }
-  else
-  {
-    int m = (c/2);
-    for(int i=0;i<m;i++)
+    if(temp->data == l)
     {
-      temp = temp->next;
+      temp2 = temp;
     }
+    temp=temp->next;
   }
-  return temp->data;
-  }
-
-}
-
-int findNLast(struct Node* head, int n)
-{
-  if(head==NULL)
-    return -1;
-  else
-  {
-  struct Node *temp = head;
-  int c=0;
-  while(temp != NULL)
-  {
-    c++;
-    temp = temp->next;
-  }
-  temp = head;
-  if(c<n)
-  {
-      while(temp->next!=NULL)
-      {
-          temp=temp->next;
-      }
-      return temp->data;
-  }
-  else{
-  int m = c-n;
-  temp=head;
-  for(int i=0;i<m;i++)
+  temp=org;
+  while(temp->next!=temp1)
   {
     temp=temp->next;
   }
-  return temp->data;
+  temp->next = temp1->next;
+  temp1->next = org;
+  org =temp1;
+  temp= org;
+  while(temp->next!= temp2)
+  {
+    temp = temp->next;
   }
+  temp->next=temp2->next;
+  temp2->next=NULL;
+  temp=org;
+  while(temp->next!=NULL)
+  {
+    temp=temp->next;
   }
-
+  temp->next = temp2;
+  return org;
 }
-
-
-
 
 void display(struct Node *p)
 {
@@ -123,17 +99,13 @@ int main()
     int n,val,c;
     printf("Enter total numbers to enter: ");
     scanf("%d",&n);
-    int last;
-    
             while(n-->0)
             {
                 scanf("%d",&val);
                 start= insertLast(start,val);
             }
-            scanf("%d",&last);
-    display(start);
     
-    int mid= findMiddle(start) ;
-    int nlast= findNLast(start, last);
-    printf("%d %d",mid,nlast);
+    display(start);
+    start = shiftSmallLarge(start);
+    display(start);
 }
