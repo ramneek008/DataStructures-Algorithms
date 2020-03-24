@@ -1,6 +1,5 @@
 
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.*;
 
 class BTree
 {
@@ -16,24 +15,24 @@ class BTree
         }
     }
 
-    static void printLevelOrder(Node p)
+    static void printLevelOrder(Node root)
     {
-        Queue<Node> q = new LinkedList<Node>();
-        q.add(p);
+        ArrayDeque<Node> q = new ArrayDeque<Node>();
+    Node temp = root;
 
-        while(!q.isEmpty())
-        {
-            Node temp = q.poll();
-            System.out.print(temp.data + " ");
-            
-            if(temp.left!=null)
-            q.add(temp.left);
+    while(temp != null)
+    {
+      System.out.print(temp.data + " ");
 
-            if(temp.right!=null);
-            q.add(temp.right);
+      if (temp.left != null)   
+        q.add(temp.left);
 
-        }
+      if (temp.right != null)  
+        q.add(temp.right);
+
+      temp = q.poll();
     }
+}
 
     public static void main(String args[])
     {
