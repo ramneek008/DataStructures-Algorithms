@@ -1,3 +1,7 @@
+// Print all paths to leaves and their details of a binary tree
+
+// Given a binary tree print all paths from root node to leaf nodes with their respective lengths and total number of paths in it.
+
 import java.util.Scanner;
 class Node
 {
